@@ -26,7 +26,7 @@ android {
     namespace "com.example.flutter_boilerplate_modular_template"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
-
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -49,6 +49,26 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+    }
+    def defaultFlavor = "prod" // Set default flavor to "prod"
+    flavorDimensions "environment"
+
+    productFlavors {
+        dev {
+        dimension "environment"
+        resValue "string", "app_name", "AppName-dev"
+        applicationIdSuffix ".dev"
+        }
+        int {
+        dimension "environment"
+        resValue "string", "app_name", "AppName-int"
+        applicationIdSuffix ".int"
+        }
+        prod {
+        dimension "environment"
+        resValue "string", "app_name", "AppName"
+        applicationIdSuffix ""
+        }
     }
 
     buildTypes {
