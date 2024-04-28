@@ -44,8 +44,16 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/    
-
+    - assets/common/    
+    - path: assets/int/
+      flavors:
+        - int
+    - path: assets/dev/
+      flavors:
+        - dev
+    - path: assets/prod/
+      flavors:
+        - prod
 
 
 
