@@ -1,16 +1,23 @@
 # flutter_launcher_icons
 
-A Flutter package to automatically generate launcher icons for Android, iOS, macOS, web, windows and Linux. No more manually resizing and replacing icons for your Flutter app's launcher! [Click to view offical docs](https://pub.dev/packages/flutter_launcher_icons)
+A flutter_launcher_icons package automatically generates launcher icons for Android, iOS, macOS, web, windows and Linux. No more manually resizing and replacing icons for your Flutter app's launcher! [Click to view offical docs](https://pub.dev/packages/flutter_launcher_icons)
 
 ## Getting Started
-Merge this branch `git merge module/flutter-launcher-icons`
+Merge the following branch into your project
+```
+git merge module/flutter-launcher-icons
+```
 
-With module/flutter-launcher-icons simply replace icon in `assets/dev/launcher-icon-dev.png` , `assets/int/launcher-icon-int.png` and `assets/prod/launcher-icon.png` files and generate icon with following command.
+After merging `module/flutter-launcher-icons` branch, replace icons in following files 
+- `assets/dev/launcher-icon.png`
+- `assets/int/launcher-icon-int.png`
+- `assets/prod/launcher-icon-dev.png` 
+After replacing the icons, generate the new icons using following command:
 ```
 flutter pub run flutter_launcher_icons
 ```
 
-### If you are don't want to use flavor use `assets/prod/launcher-icon.png` only.
+If you are don't want to use different flavors, only replade the icon `assets/prod/launcher-icon.png`.
 
 ## More customization
 ```
