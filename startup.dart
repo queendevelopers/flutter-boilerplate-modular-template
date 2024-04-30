@@ -1,10 +1,8 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-
 void main(List<String> arguments) {
-  if (arguments.length != 1) {
-    debugPrint('Usage: dart startup.dart');
+  if (arguments.isNotEmpty) {
+    print('Usage: dart startup.dart');
     return;
   }
 
@@ -20,13 +18,13 @@ void findAndReplace(String directory, String searchText, String replacementText)
         if (contents.contains(searchText)) {
           String modifiedContents = contents.replaceAll(searchText, replacementText);
           entity.writeAsString(modifiedContents).then((_) {
-            debugPrint('Replaced "$searchText" with "$replacementText" in: ${entity.path}');
+            print('Replaced "$searchText" with "$replacementText" in: ${entity.path}');
           }).catchError((error) {
             // debugPrint('Error writing to file ${entity.path}: $error');
           });
         }
       }).catchError((error) {
-        debugPrint('Error reading file ${entity.path}: $error');
+        // print('Error reading file ${entity.path}: $error');
       });
     }
   });
