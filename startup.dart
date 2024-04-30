@@ -24,7 +24,7 @@ void findAndReplace({required String directory, required String oldPackageName,r
           entity.writeAsString(modifiedContents).then((_) {
             print('Replaced "$oldPackageName" with "$newPackageName" in: ${entity.path}');
           }).catchError((error) {
-            print('Error writing to file ${entity.path}: $error');
+            print('Error renaming $oldPackageName to $newPackageName to file ${entity.path}: $error');
           });
         } 
         if (contents.contains(oldAppName)) {
@@ -32,7 +32,7 @@ void findAndReplace({required String directory, required String oldPackageName,r
           entity.writeAsString(modifiedContents).then((_) {
             print('Replaced "$oldAppName" with "$newAppName" in: ${entity.path}');
           }).catchError((error) {
-            print('Error writing to file ${entity.path}: $error');
+            print('Error renaming $oldAppName to $newAppName to file ${entity.path}: $error');
           });
         }
 
