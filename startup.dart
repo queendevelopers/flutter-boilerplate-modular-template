@@ -10,7 +10,7 @@ void main(List<String> arguments) {
 
   stdout.write('package name (com.example.domain) : ');
   String replacementText = stdin.readLineSync()!;
-  findAndReplace('.','com.example.flutter_boilerplate_modular_template', replacementText);
+  findAndReplace('.','com.example.flutterBoilerplateModularTemplate', replacementText);
 }
 
 void findAndReplace(String directory, String searchText, String replacementText) {
@@ -22,7 +22,7 @@ void findAndReplace(String directory, String searchText, String replacementText)
           entity.writeAsString(modifiedContents).then((_) {
             debugPrint('Replaced "$searchText" with "$replacementText" in: ${entity.path}');
           }).catchError((error) {
-            debugPrint('Error writing to file ${entity.path}: $error');
+            // debugPrint('Error writing to file ${entity.path}: $error');
           });
         }
       }).catchError((error) {

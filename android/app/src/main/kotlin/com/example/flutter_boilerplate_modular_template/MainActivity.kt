@@ -1,4 +1,4 @@
-package com.example.flutter_boilerplate_modular_template
+package com.example.flutterBoilerplateModularTemplate
 
 import io.flutter.embedding.android.FlutterActivity
 
