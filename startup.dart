@@ -11,11 +11,11 @@ void main(List<String> arguments) {
   stdout.write('package name (com.example.domain) : ');
   String replacementText = stdin.readLineSync()!;
   stdout.write('app name (App Name) : ');
-  String newAppName = stdin.readLineSync()!;
-  findAndReplace(directory: '.',oldPackageName: 'com.example.flutterBoilerplateModularTemplate', newPackageName: replacementText, oldAppName: 'AppName',newAppName: newAppName);
+  String newApplicationName = stdin.readLineSync()!;
+  findAndReplace(directory: '.',oldPackageName: 'com.example.flutterBoilerplateModularTemplate', newPackageName: replacementText, oldApplicationName: 'AppName',newApplicationName: newApplicationName);
 }
 
-void findAndReplace({required String directory, required String oldPackageName,required String newPackageName,required String oldAppName,required String newAppName}) {
+void findAndReplace({required String directory, required String oldPackageName,required String newPackageName,required String oldApplicationName,required String newApplicationName}) {
   Directory.current.list(recursive: true).listen((FileSystemEntity entity) {
     if (entity is File) {
       entity.readAsString().then((String contents) {
@@ -27,12 +27,12 @@ void findAndReplace({required String directory, required String oldPackageName,r
             print('Error renaming $oldPackageName to $newPackageName to file ${entity.path}: $error');
           });
         } 
-        if (contents.contains(oldAppName)) {
-          String modifiedContents = contents.replaceAll(oldAppName, newAppName);
+        if (contents.contains(oldApplicationName)) {
+          String modifiedContents = contents.replaceAll(oldApplicationName, newApplicationName);
           entity.writeAsString(modifiedContents).then((_) {
-            print('Replaced "$oldAppName" with "$newAppName" in: ${entity.path}');
+            print('Replaced "$oldApplicationName" with "$newApplicationName" in: ${entity.path}');
           }).catchError((error) {
-            print('Error renaming $oldAppName to $newAppName to file ${entity.path}: $error');
+            print('Error renaming $oldApplicationName to $newApplicationName to file ${entity.path}: $error');
           });
         }
 
