@@ -3,39 +3,37 @@
 import 'dart:io';
 
 void main(List<String> arguments) {
-  if (arguments.isNotEmpty) {
-    print('Usage: dart startup.dart');
+  if (arguments.isEmpty) {
+    showManPage();
     return;
   }
 
-  stdout.write('package name (com.example.domain) : ');
-  String replacementText = stdin.readLineSync()!;
-  stdout.write('app name (App Name) : ');
-  String newApplicationName = stdin.readLineSync()!;
-  findAndReplace(directory: '.',oldPackageName: 'com.example.flutterBoilerplateModularTemplate', newPackageName: replacementText, oldApplicationName: 'AppName',newApplicationName: newApplicationName);
+  switch(arguments[0]){
+    case "package_name":
+       return findAndReplace(directory: '.',oldText: 'com.example.flutterBoilerplateModularTemplate', newText: arguments[1]);
+    case "app_name":
+      return findAndReplace(directory: '.', oldText: "ModularApp", newText: arguments[1]);
+    default:
+      return showManPage();
+  }
 }
 
-void findAndReplace({required String directory, required String oldPackageName,required String newPackageName,required String oldApplicationName,required String newApplicationName}) {
+void showManPage() {
+    print('Usage: dart startup.dart --help');
+}
+
+void findAndReplace({required String directory, required String oldText,required String newText}) {
   Directory.current.list(recursive: true).listen((FileSystemEntity entity) {
     if (entity is File) {
       entity.readAsString().then((String contents) {
-        if (contents.contains(oldPackageName)) {
-          String modifiedContents = contents.replaceAll(oldPackageName, newPackageName);
+        if (contents.contains(oldText)) {
+          String modifiedContents = contents.replaceAll(oldText, newText);
           entity.writeAsString(modifiedContents).then((_) {
-            print('Replaced "$oldPackageName" with "$newPackageName" in: ${entity.path}');
+            print('Replaced "$oldText" with "$newText" in: ${entity.path}');
           }).catchError((error) {
-            print('Error renaming $oldPackageName to $newPackageName to file ${entity.path}: $error');
+            print('Error renaming $oldText to $newText to file ${entity.path}: $error');
           });
         } 
-        if (contents.contains(oldApplicationName)) {
-          String modifiedContents = contents.replaceAll(oldApplicationName, newApplicationName);
-          entity.writeAsString(modifiedContents).then((_) {
-            print('Replaced "$oldApplicationName" with "$newApplicationName" in: ${entity.path}');
-          }).catchError((error) {
-            print('Error renaming $oldApplicationName to $newApplicationName to file ${entity.path}: $error');
-          });
-        }
-
       }).catchError((error) {
         // print('Error reading file ${entity.path}: $error');
       });
