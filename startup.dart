@@ -9,9 +9,11 @@ void main(List<String> arguments) {
   }
 
   switch(arguments[0]){
-    case "package_name":
+    case "--package_name":
+    case "-p":
        return findAndReplace(directory: '.',oldText: 'com.example.flutterBoilerplateModularTemplate', newText: arguments[1]);
-    case "app_name":
+    case "--app_name":
+    case "-n":
       return findAndReplace(directory: '.', oldText: "ModularApp", newText: arguments[1]);
     default:
       return showManPage();
